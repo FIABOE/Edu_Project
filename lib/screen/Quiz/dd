@@ -1,0 +1,521 @@
+import 'package:education/screen/Homepage/accueil_page.dart';
+import 'package:flutter/material.dart';
+
+class RevisionPage extends StatefulWidget {
+  const RevisionPage({Key? key}) : super(key: key);
+
+  @override
+  _RevisionPageState createState() => _RevisionPageState();
+}
+
+class _RevisionPageState extends State<RevisionPage> {
+  int _selectedIndex = 1;
+  List<String> exerciceList = [
+    'exercice 1',
+    'exercice 2',
+    'exercice 3',
+    'exercice 4',
+    'exercice 5',
+    'exercice 6',
+    'exercice 3',
+    'exercice 4',
+    'exercice 5',
+    'exercice 6',
+  ];
+
+  List<int> selectedExerciceIndexes = [];
+  bool isButtonEnabled = false;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF70A19F),
+        automaticallyImplyLeading: false,
+        titleSpacing: 0.0,
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 16.0),
+              child: Text(
+                'D-Academy',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Center(
+                child: Text(
+                  'Révision',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              // Action lorsque l'icône de profil est pressée
+            },
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Card(
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[100],
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Temps de révision',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Text(
+                                '0 min',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(255, 3, 238, 148),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16.0),
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Pour l\'année',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 30,
+                            backgroundColor: Color.fromARGB(255, 138, 164, 185),
+                            child: CircularProgressIndicator(
+                              value: 0.5, // Remplacez la valeur avec le pourcentage de progression réel
+                              backgroundColor: Colors.white,
+                              valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                            ),
+                          ),
+                          SizedBox(width: 8.0),
+                          Text(
+                            '0%', // Remplacez la valeur avec le pourcentage de progression réel
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 238, 156, 3),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 8.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: Card(
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  color: const Color(0xFFECEFF1), // Couleur de fond de la carte
+                  child: const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Moyenne générale',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        SizedBox(height: 16.0),
+                        Center(
+                          child: CircleAvatar(
+                            radius: 50,
+                            backgroundColor: Colors.blue, // Couleur de fond de l'icône
+                            child: Icon(
+                              Icons.school,
+                              color: Colors.white, // Couleur de l'icône
+                              size: 40,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 16.0),
+                        Center(
+                          child: Text(
+                            '9.5', // Moyenne provisoire
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 8.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: Card(
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  color: const Color(0xFFB0BEC5), // Couleur de fond de la carte
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Center(
+                              child: Image.asset(
+                                'assets/images/sta.png',
+                                width: 40,
+                                height: 40,
+                              ),
+                            ),
+                            const SizedBox(width: 8.0),
+                            const Text(
+                              'Mes statistiques par matière',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
+                        // Autres widgets de statistiques par matière
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+  padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 8.0),
+  child: SizedBox(
+    width: double.infinity,
+    child: Card(
+      elevation: 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      color: const Color(0xFFECEFF1), // Couleur de fond de la carte
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Mes parcours',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: 3, // Modifier le nombre de cartes ici (3 ou 4)
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  color: Colors.white, // Modifier la couleur de la carte si nécessaire
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'M${index + 1}', // Texte de la carte (M1, M2, ...)
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 16.0),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(top: 16),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16, // Espace horizontal entre les cartes
+                    mainAxisSpacing: 16, // Espace vertical entre les cartes
+                    childAspectRatio: 2,
+                  ),
+                  itemCount: exerciceList.length,
+                  itemBuilder: (context, index) {
+                    final exercice = exerciceList[index];
+                    final isSelected = selectedExerciceIndexes.contains(index);
+
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (isSelected) {
+                            selectedExerciceIndexes.remove(index);
+                          } else {
+                            selectedExerciceIndexes.add(index);
+                          }
+                          isButtonEnabled = selectedExerciceIndexes.isNotEmpty;
+                        });
+                      },
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: isSelected ? Colors.white : Colors.grey,
+                            width: isSelected ? 2.0 : 1.0,
+                          ),
+                          color: isSelected ? const Color(0xFF70A19F) : Colors.transparent,
+                          boxShadow: [
+                            if (isSelected)
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                blurRadius: 5,
+                                spreadRadius: 2,
+                              ),
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.book,
+                              size: 30,
+                              color: isSelected ? Colors.white : const Color.fromARGB(255, 66, 92, 92),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              exercice,
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: isSelected ? Colors.white : Colors.black,
+                                fontWeight: FontWeight.w200,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  ),
+),
+
+            SizedBox(
+              height: MediaQuery.of(context).size.height - 460,
+              child: Container(),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.home,
+                        color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _selectedIndex = 0;
+                        });
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const AccueilPage()),
+                        );
+                      },
+                    ),
+                    Text(
+                      'Accueil',
+                      style: TextStyle(
+                        color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.library_books,
+                        color: _selectedIndex == 1 ? Colors.green : Colors.grey,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _selectedIndex = 1;
+                        });
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const RevisionPage()),
+                        );
+                      },
+                    ),
+                    Text(
+                      'Révision',
+                      style: TextStyle(
+                        color: _selectedIndex == 1 ? Colors.green : Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.emoji_events,
+                        color: _selectedIndex == 2 ? Colors.orange : Colors.grey,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _selectedIndex = 2;
+                        });
+                        // Action pour l'icône de tournoi
+                      },
+                    ),
+                    Text(
+                      'Tournoi',
+                      style: TextStyle(
+                        color: _selectedIndex == 2 ? Colors.orange : Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.star,
+                        color: _selectedIndex == 3 ? Colors.purple : Colors.grey,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _selectedIndex = 3;
+                        });
+                        // Action pour l'icône de profil
+                      },
+                    ),
+                    Text(
+                      'Premium',
+                      style: TextStyle(
+                        color: _selectedIndex == 3 ? Colors.purple : Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+    );
+  }
+}
+
+
+
+
+
+
+Row(
+                          children: [
+                            Expanded(
+                              child: Center(
+                                child: Icon(
+                                  Icons.menu_book_sharp,
+                                  size: 40,
+                                  color: Colors.blue, // Remplacez cette couleur par celle de votre choix
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 8.0),
+                            const Text(
+                              'S\'entrainer sur tous les matières',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
